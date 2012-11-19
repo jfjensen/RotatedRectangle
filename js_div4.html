@@ -45,33 +45,39 @@ function createRectangles(paper) {
 
 function drawRotatedRectangle(paper, skew, stroke, fill, id) {
 
-	var divh = document.getElementById(id).offsetHeight;
-	var divw = document.getElementById(id).offsetWidth;
-	var divt = document.getElementById(id).offsetTop;
-	var divl = document.getElementById(id).offsetLeft;
+  // get the height/width/top/left values from a div given its id...
+  var divh = document.getElementById(id).offsetHeight;
+  var divw = document.getElementById(id).offsetWidth;
+  var divt = document.getElementById(id).offsetTop;
+  var divl = document.getElementById(id).offsetLeft;
 
-	var bodyh = document.getElementById('body').offsetHeight;
-	var bodyw = document.getElementById('body').offsetWidth;
-	var bodyt = document.getElementById('body').offsetTop;
-	var bodyl = document.getElementById('body').offsetLeft;
+  // also get the height/width/top/left values from the body...
+  var bodyh = document.getElementById('body').offsetHeight;
+  var bodyw = document.getElementById('body').offsetWidth;
+  var bodyt = document.getElementById('body').offsetTop;
+  var bodyl = document.getElementById('body').offsetLeft;
 
-	paper.setSize(bodyw, bodyh);
+  // set the Raphael paper to a size big enough to hold the rectangles...
+  paper.setSize(bodyw, bodyh);
 
-	//var skew = 20;
+  // calculate the angle based on the 'skew' needed to rotate the rectangles..
+  var cenx = divl + (divw / 2);
+  var ceny = divt + (divh / 2);
+  
+  var angle1 = Raphael.angle((divl - skew), (divt - skew), cenx, ceny );
+  var angle2 = Raphael.angle((divl - skew), divt, cenx, ceny);
+  
+  var angle = - (angle1 - angle2);
 
-	var cenx = divl + (divw / 2);
-	var ceny = divt + (divh / 2);
-
-	var angle1 = Raphael.angle((divl - skew), (divt - skew), cenx, ceny );
-	var angle2 = Raphael.angle((divl - skew), divt, cenx, ceny);
-
-	var angle = - (angle1 - angle2);
-
-					
-	var c = paper.rect((divl - skew), (divt - skew), (divw + 2*skew), (divh + 2*skew));
-	c.transform("r" + angle);
-	c.attr("stroke", stroke);
-	c.attr("fill", fill);
+  // create the rectangle on the paper...
+  var c = paper.rect((divl - skew), (divt - skew), (divw + 2*skew), (divh + 2*skew));
+  
+  // rotate the rectangle according to the angle we calculated above...
+  c.transform("r" + angle);
+  
+  // give the rectangle a stroke and a fill...
+  c.attr("stroke", stroke);
+  c.attr("fill", fill);
 
 
 }
