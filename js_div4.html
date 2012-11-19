@@ -18,21 +18,28 @@ svg {
 <script type="text/javascript">
 <!--
 window.onload = function(evt) {
-	paper = Raphael(0, 0, 0, 0);
-	createRectangles(paper);
+  // initialize a Raphael canvas (called "paper") when the document loads...
+  paper = Raphael(0, 0, 0, 0);
+	
+  // now call the function to create all the rectangles around the divs...
+  createRectangles(paper);
 }
 
 window.onresize = function(evt) {
-	createRectangles(paper);
+  // new rectangles are needed when the window is resized...
+  // call the function to (re-)create new rectangles around the divs...
+  createRectangles(paper);
 }
 
 function createRectangles(paper) {
-	paper.clear();
-	drawRotatedRectangle(paper, 15, "#222", "#ccc", 'top');
-	drawRotatedRectangle(paper, 20, "#222", "#ccc", 'main');
-	drawRotatedRectangle(paper, 15, "#222", "#fff", 'main');
-	drawRotatedRectangle(paper, 20, "#222", "#eee", 'second');
-	drawRotatedRectangle(paper, 5, "#222", "#fff", 'title');
+  // always remove any existing rectangles...	
+  paper.clear();
+  // draw the various rectangles...
+  drawRotatedRectangle(paper, 15, "#222", "#ccc", 'top');
+  drawRotatedRectangle(paper, 20, "#222", "#ccc", 'main');
+  drawRotatedRectangle(paper, 15, "#222", "#fff", 'main');
+  drawRotatedRectangle(paper, 20, "#222", "#eee", 'second');
+  drawRotatedRectangle(paper, 5, "#222", "#fff", 'title');
 }
 
 
