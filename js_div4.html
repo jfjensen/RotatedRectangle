@@ -1,8 +1,15 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
 <style>
 body {
+	z-index: 0;
 	padding: 80px;
 }
 
@@ -10,9 +17,14 @@ body {
 	width: 40%;
 }
 
+.top {
+	z-index: 1000;
+}
+
 /* put the SVG behind the text... */
 svg {
-	z-index: -1;
+	position:absolute;
+	z-index: -100;
 }
 </style>
 <script src="raphael-min.js"></script>
@@ -44,6 +56,8 @@ function createRectangles(paper) {
 
   // set the Raphael paper to a size big enough to hold the rectangles...
   paper.setSize(bodyw, bodyh);
+  
+  paper.renderfix();
   
   // draw the various rectangles...
   drawRotatedRectangle(paper, 15, "#222", "#ccc", 'top');
