@@ -18,22 +18,28 @@ body {
 	width: 40%;
 }
 
-.top {
-	z-index: 1000;
-}
 
 /* put the SVG behind the text... */
 svg {
 	position:absolute;
 	z-index: -100;
 }
+
+.rvml {
+	z-index: -100;
+}
+
 </style>
 <script src="raphael-min.js"></script>
 <script type="text/javascript">
 <!--
 window.onload = function(evt) {
+
+		
+	
   // initialize a Raphael canvas (called "paper") when the document loads...
   paper = Raphael(0, 0, 0, 0);
+	
 	
   // now call the function to create all the rectangles around the divs...
   createRectangles(paper);
@@ -95,7 +101,7 @@ function drawRotatedRectangle(paper, skew, stroke, fill, id) {
   // give the rectangle a stroke and a fill...
   c.attr("stroke", stroke);
   c.attr("fill", fill);
-
+	c.attr("class", "RotRectDiv");
 
 }
 
