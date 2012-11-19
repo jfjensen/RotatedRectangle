@@ -1,0 +1,121 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<style>
+body {
+	padding: 80px;
+}
+
+#title {
+	width: 40%;
+}
+
+svg {
+	z-index: -1;
+}
+</style>
+<script src="raphael-min.js"></script>
+<script type="text/javascript">
+<!--
+window.onload = function(evt) {
+	paper = Raphael(0, 0, 0, 0);
+	createRectangles(paper);
+}
+
+window.onresize = function(evt) {
+	createRectangles(paper);
+}
+
+function createRectangles(paper) {
+	paper.clear();
+	drawRotatedRectangle(paper, 15, "#222", "#ccc", 'top');
+	drawRotatedRectangle(paper, 20, "#222", "#ccc", 'main');
+	drawRotatedRectangle(paper, 15, "#222", "#fff", 'main');
+	drawRotatedRectangle(paper, 20, "#222", "#eee", 'second');
+	drawRotatedRectangle(paper, 5, "#222", "#fff", 'title');
+}
+
+
+function drawRotatedRectangle(paper, skew, stroke, fill, id) {
+
+	var divh = document.getElementById(id).offsetHeight;
+	var divw = document.getElementById(id).offsetWidth;
+	var divt = document.getElementById(id).offsetTop;
+	var divl = document.getElementById(id).offsetLeft;
+
+	var bodyh = document.getElementById('body').offsetHeight;
+	var bodyw = document.getElementById('body').offsetWidth;
+	var bodyt = document.getElementById('body').offsetTop;
+	var bodyl = document.getElementById('body').offsetLeft;
+
+	paper.setSize(bodyw, bodyh);
+
+	//var skew = 20;
+
+	var cenx = divl + (divw / 2);
+	var ceny = divt + (divh / 2);
+
+	var angle1 = Raphael.angle((divl - skew), (divt - skew), cenx, ceny );
+	var angle2 = Raphael.angle((divl - skew), divt, cenx, ceny);
+
+	var angle = - (angle1 - angle2);
+
+					
+	var c = paper.rect((divl - skew), (divt - skew), (divw + 2*skew), (divh + 2*skew));
+	c.transform("r" + angle);
+	c.attr("stroke", stroke);
+	c.attr("fill", fill);
+
+
+}
+
+//-->
+</script>
+
+</head>
+
+
+<body  id="body">
+
+<div id="top" class="top" >
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent blandit venenatis purus. 
+Integer massa libero, vehicula id, consequat sed, tincidunt nec, purus. Class aptent taciti 
+sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse potenti. 
+Nunc vulputate magna non magna. Aenean lorem eros, adipiscing quis, semper non, dictum a,
+ nunc. Curabitur ut sem. Pellentesque a est id neque hendrerit ultrices. Donec vulputate tincidunt 
+turpis. Curabitur dignissim vestibulum nunc. Aliquam felis lorem, ultrices sit amet, convallis a, 
+accumsan vel, ante. Proin aliquam turpis sed augue. In pellentesque, magna a pulvinar adipiscing, 
+est orci adipiscing felis, sed laoreet urna magna quis neque. Proin facilisis aliquet urna.
+</div>
+<br/>
+<br/>
+<div id="main" class="top" >
+<h3>Aliquam vel tortor sem</h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent blandit venenatis purus. 
+Integer massa libero, vehicula id, consequat sed, tincidunt nec, purus. Class aptent taciti 
+sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse potenti. 
+Nunc vulputate magna non magna. Aenean lorem eros, adipiscing quis, semper non, dictum a,
+ nunc. Curabitur ut sem. Pellentesque a est id neque hendrerit ultrices. Donec vulputate tincidunt 
+turpis. Curabitur dignissim vestibulum nunc. Aliquam felis lorem, ultrices sit amet, convallis a, 
+accumsan vel, ante. Proin aliquam turpis sed augue. In pellentesque, magna a pulvinar adipiscing, 
+est orci adipiscing felis, sed laoreet urna magna quis neque. Proin facilisis aliquet urna.</p>
+<p>Donec a malesuada nisl. Aliquam vel tortor sem. Morbi eu urna in lorem posuere vulputate. Aliquam nec eros quis elit aliquam pretium. Aliquam a nunc sed nisi suscipit tempor. Vivamus fringilla tempus lacus. Ut tristique dolor et lectus porttitor rhoncus. Phasellus ornare elementum magna. Praesent luctus eros sed ante bibendum posuere. Donec lacinia posuere aliquam.</p>
+<p>Proin id justo et ligula semper tempus a vitae turpis. Nunc justo tellus, laoreet et iaculis eu, tempus ut ligula. Sed elementum luctus enim vitae dapibus. Maecenas nec tristique metus. Donec nibh leo, gravida ut malesuada sit amet, sagittis vehicula nibh. Phasellus eget vestibulum ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+</div>
+<br/>
+<br/>
+<div id="second" class="top" >
+<div id="title"><h3>Aliquam vel tortor sem</h3></div>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent blandit venenatis purus. 
+Integer massa libero, vehicula id, consequat sed, tincidunt nec, purus. Class aptent taciti 
+sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse potenti. 
+Nunc vulputate magna non magna. Aenean lorem eros, adipiscing quis, semper non, dictum a,
+ nunc. Curabitur ut sem. Pellentesque a est id neque hendrerit ultrices. Donec vulputate tincidunt 
+turpis. Curabitur dignissim vestibulum nunc. Aliquam felis lorem, ultrices sit amet, convallis a, 
+accumsan vel, ante. Proin aliquam turpis sed augue. In pellentesque, magna a pulvinar adipiscing, 
+est orci adipiscing felis, sed laoreet urna magna quis neque. Proin facilisis aliquet urna.</p>
+<p>Donec a malesuada nisl. Aliquam vel tortor sem. Morbi eu urna in lorem posuere vulputate. Aliquam nec eros quis elit aliquam pretium. Aliquam a nunc sed nisi suscipit tempor. Vivamus fringilla tempus lacus. Ut tristique dolor et lectus porttitor rhoncus. Phasellus ornare elementum magna. Praesent luctus eros sed ante bibendum posuere. Donec lacinia posuere aliquam.</p>
+<p>Proin id justo et ligula semper tempus a vitae turpis. Nunc justo tellus, laoreet et iaculis eu, tempus ut ligula. Sed elementum luctus enim vitae dapibus. Maecenas nec tristique metus. Donec nibh leo, gravida ut malesuada sit amet, sagittis vehicula nibh. Phasellus eget vestibulum ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+</div>
+</body>
+</html>
